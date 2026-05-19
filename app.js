@@ -101,7 +101,7 @@
       },
       events: {
         onReady: () => {
-          state.player.setVolume(80);
+          state.player.setVolume(50);
           state.player.pauseVideo();
         },
         onStateChange: onPlayerStateChange,
@@ -123,7 +123,7 @@
     state.userArmed = true;
     try {
       state.player.unMute();
-      state.player.setVolume(80);
+      state.player.setVolume(50);
 
       // ユーザー操作の直後に短く再生して、以後の再生許可を取りにいく。
       state.player.playVideo();
@@ -208,7 +208,7 @@
     if (hhmm === state.alarmHHMM && state.firedForMinute !== minuteKey) {
       state.firedForMinute = minuteKey;
       state.player.unMute();
-      state.player.setVolume(80);
+      state.player.setVolume(50);
 
       try {
         state.player.playVideo();
@@ -254,7 +254,7 @@
   els.testButton.addEventListener("click", () => {
     if (!state.player) return;
     state.player.unMute();
-    state.player.setVolume(80);
+    state.player.setVolume(50);
     state.player.playVideo();
   });
   els.stopButton.addEventListener("click", () => {
