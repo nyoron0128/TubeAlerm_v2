@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TubeAlerm</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>TubeAlerm</h1>
+      <p>指定時刻になったら、指定したYouTube動画を音ありでループ再生する静的Webアプリ。</p>
+    </header>
+
+    <section class="panel">
+      <div class="clock">
+        <div id="dateText" class="date">----</div>
+        <div id="timeText" class="time">--:--:--</div>
+      </div>
+
+      <form id="alarmForm" class="form" autocomplete="off">
+        <label class="field">
+          <span>YouTube URL または Video ID</span>
+          <input id="videoInput" type="text" placeholder="https://www.youtube.com/watch?v=XXXXXXXXXXX" required>
+        </label>
+
+        <label class="field">
+          <span>再生時刻</span>
+          <input id="timeInput" type="time" required>
+        </label>
+
+        <label class="check">
+          <input id="volumeIncreaseInput" type="checkbox">
+          <span>ループごとに音量を少し上げる</span>
+        </label>
+
+        <div class="buttons">
+          <button type="submit" class="primary">アラーム設定</button>
+          <button type="button" id="resetButton">リセット</button>
+          <button type="button" id="armButton">再生許可を有効化</button>
+          <button type="button" id="testButton">テスト再生</button>
+          <button type="button" id="stopButton">停止</button>
+        </div>
+      </form>
+
+      <div id="status" class="status off">アラームなし</div>
+      <div id="permissionStatus" class="notice">
+        音あり再生を安定させるには、このページで「再生許可を有効化」を一度押しておく。
+      </div>
+    </section>
+
+    <section class="playerPanel">
+      <div id="player"></div>
+    </section>
+
+    <section class="notes">
+      <h2>動作メモ</h2>
+      <ul>
+        <li>URLは <code>?vid=VIDEO_ID&amp;time=0730</code> 形式でも開ける。</li>
+        <li>Chromeの仕様上、ユーザー操作なしの音あり自動再生は保証されない。</li>
+        <li>PCがスリープするとブラウザ側のタイマーも止まるため、スリープしない設定で使う。</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
